@@ -23,8 +23,9 @@ def test_pdf_extraction():
     assert pages, "No pages were extracted."
 
     for page in pages:
-        assert "page" in page
-        assert "text" in page
+       assert "page" in page
+       assert "text" in page
+       assert page["text"].strip(), f"Page {page['page']} has no extracted text"
 
     output_path = save_extracted_text(
         str(pdf_path),
