@@ -17,6 +17,7 @@ from app.config import (
     get_ollama_timeout_seconds,
 )
 from app.extraction.rule_schema import ComplianceRule
+from app.validation.product_checkability import validate_product_rule
 from app.validation.rule_validator import validate_rule
 
 
@@ -140,9 +141,7 @@ class OllamaRuleGenerator:
         # Skip the model call entirely (Devanagari text still goes to the
         # model since Hindi normative wording uses a separate vocabulary).
         chunk_text = chunk.get("text", "") if isinstance(chunk, dict) else ""
-        if not extract_normative_candidates(chunk_text) and not re.search(
-            r"[\u0900-\u097f]", chunk_text
-        ):
+        if not chunk_needs_model_call(chunk_text):
             if diagnostics is not None:
                 diagnostics.update(skipped_no_candidates=True, proposed=0)
             return []
@@ -155,6 +154,8 @@ class OllamaRuleGenerator:
         )
         for attempt in (1, 2):
             try:
+                if diagnostics is not None:
+                    diagnostics["attempts"] = attempt
                 response = httpx.post(
                     f"{self.base_url}/api/generate",
                     json=request,
@@ -205,6 +206,10 @@ class OllamaRuleGenerator:
 
 # Deterministic normative-candidate signals. Case-insensitive textual match
 # only; this identifies potentially normative spans, never legal meaning.
+# English signals mirror the validator's normative vocabulary plus the
+# applicability wording ("applicable", "only") used by real advisories for
+# operative coverage/permission sentences; Hindi signals match the
+# validator's Hindi normative set so Hindi-normative chunks get candidates.
 _NORMATIVE_CANDIDATE_SIGNALS = (
     "shall not apply",
     "shall",
@@ -214,6 +219,14 @@ _NORMATIVE_CANDIDATE_SIGNALS = (
     "permitted",
     "covered",
     "prohibited",
+    "applicable",
+    "only",
+    "होगा",
+    "होंगे",
+    "चाहिए",
+    "लागू नहीं",
+    "अपेक्षित",
+    "निषिद्ध",
 )
 _NORMATIVE_CANDIDATE_RE = re.compile(
     "|".join(r"\b" + re.escape(sig) + r"\b" for sig in sorted(_NORMATIVE_CANDIDATE_SIGNALS, key=len, reverse=True)),
@@ -261,6 +274,19 @@ def extract_normative_candidates(chunk_text: Any) -> list[dict]:
             cursor = end
             candidates.append({"index": len(candidates) + 1, "text": text, "start": start, "end": end})
     return candidates
+
+
+def chunk_needs_model_call(chunk_text: Any) -> bool:
+    """Whether a chunk justifies a model call.
+
+    Chunks without normative candidate signals cannot yield a validated rule:
+    the validator requires normative evidence from the same English/Hindi
+    vocabulary the candidate signals mirror. Such chunks skip the model, so
+    zero-candidate chunks produce zero Ollama HTTP requests.
+    """
+    if not isinstance(chunk_text, str) or not chunk_text.strip():
+        return False
+    return bool(extract_normative_candidates(chunk_text))
 
 
 def _candidate_block(chunk_text: str) -> str:
@@ -518,6 +544,15 @@ def _parse_rules(payload: Any, chunk: dict, source_document: str,
                 if len(diagnostics["rejection_reasons"]) < _MAX_REPORTED_REJECTIONS:
                     diagnostics["rejection_reasons"].append(
                         f"{rule.rule_id}: {errors[0]}"[:_MAX_REJECTION_CHARS])
+            continue
+        product_errors = validate_product_rule(rule)
+        if product_errors:
+            logger.warning("Rejected LLM rule that is not product-checkable: %s", rule.rule_id)
+            if diagnostics is not None:
+                diagnostics["validation_rejected"] += 1
+                if len(diagnostics["rejection_reasons"]) < _MAX_REPORTED_REJECTIONS:
+                    diagnostics["rejection_reasons"].append(
+                        f"{rule.rule_id}: {product_errors[0]}"[:_MAX_REJECTION_CHARS])
             continue
         rules.append(rule)
     return rules

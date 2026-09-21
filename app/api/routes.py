@@ -4,7 +4,7 @@ from threading import Lock, Thread
 
 from fastapi import APIRouter
 
-from app.rag_update_service import get_update_status, is_update_running, run_rag_update
+from app.refresh import check_for_updates, get_refresh_status, is_update_running
 from app.repository.rule_repository import get_active_rules
 
 
@@ -13,21 +13,32 @@ _refresh_dispatch_lock = Lock()
 _refresh_thread: Thread | None = None
 
 
-@router.post("/rag/refresh")
-def refresh_regulatory_knowledge() -> dict:
-    """Queue the shared update service without occupying an API worker."""
+def _queue_refresh() -> dict:
+    """Queue the shared two-document refresh without occupying an API worker."""
     global _refresh_thread
     with _refresh_dispatch_lock:
         if is_update_running() or (_refresh_thread is not None and _refresh_thread.is_alive()):
-            return {**get_update_status(), "status": "in_progress", "accepted": False}
-        _refresh_thread = Thread(target=run_rag_update, name="manual-rag-refresh", daemon=True)
+            return {**get_refresh_status(), "status": "in_progress", "accepted": False}
+        _refresh_thread = Thread(target=check_for_updates, name="manual-rag-refresh", daemon=True)
         _refresh_thread.start()
-    return {**get_update_status(), "status": "running", "accepted": True}
+    return {**get_refresh_status(), "status": "running", "accepted": True}
+
+
+@router.post("/rag/refresh")
+def refresh_regulatory_knowledge() -> dict:
+    """Queue the shared update service without occupying an API worker."""
+    return _queue_refresh()
+
+
+@router.post("/rag/check-updates")
+def check_regulatory_updates() -> dict:
+    """Frontend entry point for the shared two-document refresh."""
+    return _queue_refresh()
 
 
 @router.get("/rag/status")
 def regulatory_knowledge_status() -> dict:
-    return get_update_status()
+    return get_refresh_status()
 
 
 @router.get("/rules/active")

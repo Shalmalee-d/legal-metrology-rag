@@ -7,12 +7,18 @@ def test_manual_refresh_queues_central_update_function(monkeypatch):
         def is_alive(self): return bool(started)
     monkeypatch.setattr(routes, "Thread", Thread)
     monkeypatch.setattr(routes, "is_update_running", lambda: False)
-    monkeypatch.setattr(routes, "get_update_status", lambda: {"current_stage": "idle"})
+    monkeypatch.setattr(routes, "get_refresh_status", lambda: {"current_stage": "idle"})
+    monkeypatch.setattr(routes, "check_for_updates", lambda: {"status": "updated"})
     routes._refresh_thread = None
     result = routes.refresh_regulatory_knowledge()
     assert result["accepted"] is True
     assert result["status"] == "running"
     assert started == [True]
+    assert routes._refresh_thread.target() == {"status": "updated"}
+    routes._refresh_thread = None
+    result = routes.check_regulatory_updates()
+    assert result["accepted"] is True
+    assert started == [True, True]
 
 
 def test_active_rule_endpoint_returns_serialized_active_rules(monkeypatch):

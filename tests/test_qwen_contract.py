@@ -531,6 +531,45 @@ def test_chunk_without_normative_signals_yields_no_candidates():
     assert "none found" in low
 
 
+def test_garments_advisory_applicability_yields_candidates():
+    from pathlib import Path as _Path
+
+    from app.extraction.llm_rule_generator import extract_normative_candidates
+
+    f = _Path("data/extracted/Download_The_Legal_Metrology__Packaged_Commodities__Rules_2011-_Advisory_for_enforcement_of_provisions_of_Rules_for_Readymade_Garments__Hosiery_products.json")
+    chunks = __import__("app.extraction.chunker", fromlist=["chunk_pages"]).chunk_pages(
+        [{"page": y["page"], "text": y["text"]} for y in __import__("json").loads(f.read_text(encoding="utf-8"))]
+    )
+    assert len(chunks) == 2
+    first = extract_normative_candidates(chunks[0]["text"])
+    texts = [" ".join(t.split()) for t in (c["text"] for c in first)]
+    assert any("applicable only for pre-packaged" in t for t in texts)
+    assert any("may include only the following declaration" in t for t in texts)
+    for candidate in first:
+        assert chunks[0]["text"][candidate["start"]:candidate["end"]] == candidate["text"]
+
+
+def test_hindi_normative_signals_yield_candidates():
+    from app.extraction.llm_rule_generator import extract_normative_candidates
+
+    text = "पैकेज पर अधिकतम खुदरा मूल्य अंकित होना चाहिए।"
+    assert len(text) >= 20
+    assert extract_normative_candidates(text)
+
+
+def test_zero_candidate_chunk_makes_zero_http_requests(monkeypatch):
+    import app.extraction.llm_rule_generator as generator
+
+    posts = []
+    monkeypatch.setattr(generator.httpx, "post",
+                        lambda *a, **k: posts.append(True) or _Response({"response": "{}"}))
+    assert generate_rules_from_chunk(
+        {"chunk_id": "m", "source_pages": [1],
+         "text": "Government of India\nMinistry of Consumer Affairs\nPhone 011-23389489"},
+        "Notice") == []
+    assert posts == []
+
+
 def test_exemption_with_applies_to_is_accepted(monkeypatch):
     import app.extraction.llm_rule_generator as generator
 
