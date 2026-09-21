@@ -14,6 +14,9 @@ __pycache__/
 # Local RAG data
 data/documents/
 data/extracted/
+data/rules/compliance_rules.json
+data/ocr/
+data/registry/
 
 # OS
 .DS_Store

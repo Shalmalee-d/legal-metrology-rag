@@ -48,5 +48,15 @@ def test_chunking():
         print(chunk["text"][:500])
 
 
+def test_oversized_page_is_split_within_model_input_limit():
+    pages = [{"page": 7, "text": "Requirement sentence. " * 400}]
+
+    chunks = chunk_pages(pages, max_characters=240)
+
+    assert len(chunks) > 1
+    assert all(len(chunk["text"]) <= 240 for chunk in chunks)
+    assert all(chunk["source_pages"] == [7] for chunk in chunks)
+
+
 if __name__ == "__main__":
     test_chunking()
