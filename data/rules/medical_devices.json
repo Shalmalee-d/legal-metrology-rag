@@ -1,0 +1,98 @@
+{
+  "category": "medical_devices",
+  "description": "Legal Metrology compliance rules applicable to medical devices.",
+  "rule_count": 4,
+  "rules": [
+    {
+      "rule_id": "LM_MED_001",
+      "category": "medical_devices",
+      "title": "Medical Devices Rules 2017 govern declarations on medical device packages",
+      "requirement": "For packages containing medical devices, declarations must be made in accordance with the Medical Devices Rules, 2017, rather than the general declaration provisions of the LM(PC) Rules, 2011.",
+      "applies_when": "Applies to packages containing medical devices.",
+      "check_type": "conditional_alternative_regime",
+      "check_parameters": {},
+      "evidence_required": [
+        "medical_devices_rules_2017_compliance"
+      ],
+      "source": [
+        {
+          "document": "267107_1761404707.pdf — G.S.R. 778(E), dated 23 October 2025 (LM(PC) Amendment Rules, 2025 - Medical Devices)",
+          "rule_or_section": "Rule 2(h), new proviso",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that for packages containing medical devices, the provisions of the Medical Devices Rules, 2017, shall apply to make declarations;",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_MED_002",
+      "category": "medical_devices",
+      "title": "Medical Devices Rules 2017 govern numeral/letter height on medical device packages",
+      "requirement": "For packages containing medical devices, the height of any numeral and letter used to make declarations is governed by the Medical Devices Rules, 2017, instead of the LM(PC) Rules Table-I sizing requirement.",
+      "applies_when": "Applies to packages containing medical devices.",
+      "check_type": "conditional_alternative_regime",
+      "check_parameters": {},
+      "evidence_required": [
+        "medical_devices_rules_2017_compliance"
+      ],
+      "source": [
+        {
+          "document": "267107_1761404707.pdf — G.S.R. 778(E), dated 23 October 2025 (LM(PC) Amendment Rules, 2025 - Medical Devices)",
+          "rule_or_section": "Rule 7(2), new proviso",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that for packages containing medical devices, the provisions of the Medical Devices Rules, 2017, shall apply for the height of any numeral and letter to make declarations.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_MED_003",
+      "category": "medical_devices",
+      "title": "Medical Devices Rules 2017 govern numeral/letter width on medical device packages",
+      "requirement": "For packages containing medical devices, the width of any numeral and letter used to make declarations is governed by the Medical Devices Rules, 2017, instead of the LM(PC) Rules width-ratio requirement.",
+      "applies_when": "Applies to packages containing medical devices.",
+      "check_type": "conditional_alternative_regime",
+      "check_parameters": {},
+      "evidence_required": [
+        "medical_devices_rules_2017_compliance"
+      ],
+      "source": [
+        {
+          "document": "267107_1761404707.pdf — G.S.R. 778(E), dated 23 October 2025 (LM(PC) Amendment Rules, 2025 - Medical Devices)",
+          "rule_or_section": "Rule 7(3), new proviso",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that for packages containing medical devices, the provisions of the Medical Devices Rules, 2017, shall apply for the width of any numeral and letter to make declarations.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_MED_004",
+      "category": "medical_devices",
+      "title": "No rule 33 relaxation where Medical Devices Rules 2017 apply",
+      "requirement": "Where the Medical Devices Rules, 2017 are applicable to a package, the relaxation mechanism otherwise available under rule 33 of the LM(PC) Rules does not apply to that package.",
+      "applies_when": "Applies to packages containing medical devices governed by the Medical Devices Rules, 2017.",
+      "check_type": "exclusion",
+      "check_parameters": {},
+      "evidence_required": [
+        "medical_devices_rules_2017_applicability"
+      ],
+      "source": [
+        {
+          "document": "267107_1761404707.pdf — G.S.R. 778(E), dated 23 October 2025 (LM(PC) Amendment Rules, 2025 - Medical Devices)",
+          "rule_or_section": "Rule 33, new sub-rule (2)",
+          "page": null
+        }
+      ],
+      "source_text": "In case where the Medical Devices Rules, 2017 are applicable, the relaxation given under this rule shall not apply.",
+      "effective_from": null,
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "267107_1761404707.pdf — G.S.R. 778(E), dated 23 October 2025 (LM(PC) Amendment Rules, 2025 - Medical Devices)"
+  ]
+}

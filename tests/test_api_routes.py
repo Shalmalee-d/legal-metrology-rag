@@ -1,3 +1,6 @@
+import pytest
+
+
 def test_manual_refresh_queues_central_update_function(monkeypatch):
     import app.api.routes as routes
     started = []
@@ -21,12 +24,66 @@ def test_manual_refresh_queues_central_update_function(monkeypatch):
     assert started == [True, True]
 
 
-def test_active_rule_endpoint_returns_serialized_active_rules(monkeypatch):
+def test_active_rule_endpoint_returns_serialized_active_rules(tmp_path):
+    import json
+
     import app.api.routes as routes
-    from app.extraction.rule_schema import ComplianceRule
 
-    rule = ComplianceRule(rule_id="LM_001", parameter="mrp", condition="must_exist",
-        source_document="Rules", source_pages=[1], evidence_text="MRP shall be declared.")
-    monkeypatch.setattr(routes, "get_active_rules", lambda: [rule])
+    rules_dir = tmp_path / "rules"
+    rules_dir.mkdir(parents=True, exist_ok=True)
+    common = [{
+        "rule_id": "LM_A", "category": "common", "title": "T",
+        "requirement": "Every package must declare the test item.",
+        "applies_when": "Always.", "check_type": "must_exist", "check_parameters": {},
+        "evidence_required": ["test_item"],
+        "source": [{"document": "Rules", "rule_or_section": "Rule 6", "page": 1}],
+        "source_text": "Every package shall declare the test item.",
+        "effective_from": None, "status": "active",
+    }]
+    (rules_dir / "compliance_rules.json").write_text(
+        json.dumps({"rules": common}), encoding="utf-8")
 
-    assert routes.active_rules() == [rule.model_dump()]
+    from app.extraction.product_rule import ProductRule
+
+    assert routes.active_rules() == [ProductRule(**common[0]).model_dump()]
+
+
+def test_category_endpoints(tmp_path):
+    import json
+
+    from fastapi import HTTPException
+
+    import app.api.routes as routes
+
+    rules_dir = tmp_path / "rules"
+    rules_dir.mkdir(parents=True, exist_ok=True)
+    (rules_dir / "compliance_rules.json").write_text(
+        json.dumps({"rules": []}), encoding="utf-8")
+    food = [{
+        "rule_id": "LM_F", "category": "food", "title": "T",
+        "requirement": "Every package must declare the test item.",
+        "applies_when": "Always.", "check_type": "must_exist", "check_parameters": {},
+        "evidence_required": ["test_item"],
+        "source": [{"document": "Rules", "rule_or_section": "Rule 6", "page": 1}],
+        "source_text": "Every package shall declare the test item.",
+        "effective_from": None, "status": "active",
+    }]
+    (rules_dir / "food.json").write_text(
+        json.dumps({"rules": food}), encoding="utf-8")
+
+    assert routes.rule_categories() == ["food"]
+    from app.extraction.product_rule import ProductRule
+
+    expected = [ProductRule(**food[0]).model_dump()]
+    assert routes.category_rules("food") == expected
+    assert routes.applicable_rules("food") == expected
+    with pytest.raises(HTTPException) as missing:
+        routes.category_rules("nope")
+    assert missing.value.status_code == 404
+    with pytest.raises(HTTPException) as missing_applicable:
+        routes.applicable_rules("nope")
+    assert missing_applicable.value.status_code == 404
+    (rules_dir / "broken.json").write_text("{bad json", encoding="utf-8")
+    with pytest.raises(HTTPException) as malformed:
+        routes.category_rules("broken")
+    assert malformed.value.status_code == 500

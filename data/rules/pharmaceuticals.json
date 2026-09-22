@@ -1,0 +1,33 @@
+{
+  "category": "pharmaceuticals",
+  "description": "Legal Metrology compliance rules applicable to medicines/drugs/pharmaceutical packaged products.",
+  "rule_count": 1,
+  "rules": [
+    {
+      "rule_id": "LM_PHARMA_001",
+      "category": "pharmaceuticals",
+      "title": "Exemption for Drugs (Price Control) Order formulations, except medical devices declared as drugs",
+      "requirement": "Packages containing scheduled formulations and non-scheduled formulations covered under the Drugs (Price Control) Order, 2013 made under the Essential Commodities Act, 1955 are exempt from the LM(PC) Rules under rule 26. This exemption does NOT apply to medical devices that have been declared as drugs.",
+      "applies_when": "Applies to packages containing drug formulations under the DPCO 2013.",
+      "check_type": "conditional_exemption",
+      "check_parameters": {},
+      "evidence_required": [
+        "dpco_formulation_status",
+        "declared_as_drug_flag"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 26(c), substituted",
+          "page": null
+        }
+      ],
+      "source_text": "it contains scheduled formulations and non-scheduled formulations covered under the Drugs (Price Control) Order, 2013 made under section 3 of the Essential Commodities Act, 1955 (10 of 1955): Provided that no exemption shall be applicable to medical devices declared as drugs.",
+      "effective_from": null,
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)"
+  ]
+}

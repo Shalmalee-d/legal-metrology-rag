@@ -1,0 +1,8 @@
+{
+  "category": "unknown",
+  "description": "Legal Metrology compliance rules whose product-category applicability cannot be confidently narrowed from the provided source documents; the general mandatory packaged-commodity rules are included here for completeness.",
+  "rule_count": 0,
+  "rules": [],
+  "sources": [],
+  "extraction_notes": "No category-specific rule was identified in the supplied source-derived database."
+}

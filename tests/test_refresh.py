@@ -1,4 +1,6 @@
-"""Two-document fingerprint-gated refresh: unchanged skips Qwen, changed reprocesses."""
+"""Two-document fingerprint-gated refresh with incremental catalog persistence."""
+
+import json
 
 import pytest
 
@@ -13,13 +15,43 @@ GARMENTS = {"title": "Download Advisory for Readymade Garments/ Hosiery products
             "category": "legal_metrology_packaged_commodities"}
 
 
-def _rule(source="https://example.test/base.pdf", rule_id="LM_001"):
-    return ComplianceRule(rule_id=rule_id, parameter="mrp", condition="must_exist",
+def _extraction_rule():
+    return ComplianceRule(rule_id="LM_001", parameter="mrp", condition="must_exist",
                           requirement="The package must declare the retail sale price.",
                           source_document="Rules", source_pages=[1],
-                          evidence_text="Every package shall declare the retail sale price.",
-                          source_document_id=source, source_identity=f"{rule_id}-v1",
-                          version="v1")
+                          evidence_text="Every package shall declare the retail sale price.")
+
+
+def _with_overlay(rule, category="common"):
+    rule._product_overlay = {
+        "category": category,
+        "title": "Retail sale price declaration",
+        "applies_when": "Always applies.",
+        "check_type": "must_exist",
+    }
+    return rule
+
+
+def _product_fixture(rule_id="LM_X", category="common"):
+    return {
+        "rule_id": rule_id, "category": category, "title": "T",
+        "requirement": "Every package must declare the test item.",
+        "applies_when": "Always.", "check_type": "must_exist", "check_parameters": {},
+        "evidence_required": ["test_item"],
+        "source": [{"document": "Rules", "rule_or_section": "Rule 6", "page": 1}],
+        "source_text": "Every package shall declare the test item.",
+        "effective_from": None, "status": "active",
+    }
+
+
+def _seed_catalog(tmp_path, common=None, categories=None):
+    rules_dir = tmp_path / "rules"
+    rules_dir.mkdir(parents=True, exist_ok=True)
+    (rules_dir / "compliance_rules.json").write_text(
+        json.dumps({"rules": common if common is not None else []}), encoding="utf-8")
+    for name, rules in (categories or {}).items():
+        (rules_dir / f"{name}.json").write_text(
+            json.dumps({"rules": rules}), encoding="utf-8")
 
 
 def _configure(monkeypatch):
@@ -36,7 +68,7 @@ def test_unchanged_documents_skip_qwen_entirely(monkeypatch):
                         lambda document: (_ for _ in ()).throw(AssertionError("no download")))
     monkeypatch.setattr(refresh, "process_pdf_document",
                         lambda *args, **kwargs: (_ for _ in ()).throw(AssertionError("no Qwen")))
-    monkeypatch.setattr(refresh, "get_active_rules", lambda: [])
+    monkeypatch.setattr(refresh, "load_all_active_rules", lambda: [])
 
     result = refresh.check_for_updates()
 
@@ -47,14 +79,11 @@ def test_unchanged_documents_skip_qwen_entirely(monkeypatch):
     assert result["unchanged_documents"] == 2
 
 
-def test_changed_document_reprocessing_preserves_other_rules(tmp_path, monkeypatch):
-    import app.repository.rule_repository as repository
+def test_changed_document_appends_and_preserves_other_rules(tmp_path, monkeypatch):
     import app.refresh as refresh
 
-    monkeypatch.setattr(repository, "RULES_DIR", tmp_path)
-    monkeypatch.setattr(repository, "RULES_FILE", tmp_path / "compliance_rules.json")
-    unrelated = _rule(source="https://example.test/other.pdf", rule_id="LM_OTHER")
-    repository.save_rules([unrelated])
+    _seed_catalog(tmp_path, common=[_product_fixture("LM_OLD")],
+                  categories={"food": [_product_fixture("LM_F", category="food")]})
     _configure(monkeypatch)
     monkeypatch.setattr(refresh, "check_document_change",
                         lambda document: "CHANGED" if document["url"] == BASE["url"] else "UNCHANGED")
@@ -62,7 +91,7 @@ def test_changed_document_reprocessing_preserves_other_rules(tmp_path, monkeypat
         "title": document["title"], "url": document["url"], "local_path": "x.pdf",
         "sha256": "newhash", "processed_sha256": None, "status": "CHANGED"})
     monkeypatch.setattr(refresh, "process_pdf_document",
-                        lambda *args, **kwargs: [_rule(source=BASE["url"])])
+                        lambda *args, **kwargs: [_with_overlay(_extraction_rule())])
     marked = []
     monkeypatch.setattr(refresh, "mark_document_processed", lambda url, sha: marked.append((url, sha)))
 
@@ -72,10 +101,11 @@ def test_changed_document_reprocessing_preserves_other_rules(tmp_path, monkeypat
     assert result["documents_changed"] == 1
     assert result["rules_updated"] is True
     assert (BASE["url"], "newhash") in marked
-    kept = {rule.rule_id: rule for rule in repository.load_rules()}
-    assert kept["LM_001"].status == "active"
-    assert kept["LM_OTHER"].status == "active"
-    assert kept["LM_OTHER"].source_document_id == "https://example.test/other.pdf"
+    from app.repository.rule_repository import load_applicable_rules, load_category_rules
+
+    ids = [rule.rule_id for rule in load_applicable_rules(None)]
+    assert "LM_OLD" in ids
+    assert len([rule for rule in load_category_rules("food") if rule.rule_id == "LM_F"]) == 1
 
 
 def test_genuinely_empty_document_marks_processed_without_failure(monkeypatch):
@@ -84,7 +114,7 @@ def test_genuinely_empty_document_marks_processed_without_failure(monkeypatch):
     monkeypatch.setattr(refresh, "download_document", lambda document: {
         "title": document["title"], "url": document["url"], "local_path": "x.pdf",
         "sha256": "hash", "processed_sha256": None, "status": "CHANGED"})
-    monkeypatch.setattr(refresh, "get_active_rules", lambda: [])
+    monkeypatch.setattr(refresh, "load_all_active_rules", lambda: [])
 
     from app.extraction.rule_pipeline import NO_RULES_FOUND
 
@@ -99,8 +129,6 @@ def test_genuinely_empty_document_marks_processed_without_failure(monkeypatch):
     monkeypatch.setattr(refresh, "process_pdf_document", fake_process)
     marked = []
     monkeypatch.setattr(refresh, "mark_document_processed", lambda url, sha: marked.append(url))
-    monkeypatch.setattr(refresh, "update_rules",
-                        lambda rules: (_ for _ in ()).throw(AssertionError("nothing to activate")))
 
     result = refresh.check_for_updates()
 
@@ -113,7 +141,7 @@ def test_genuinely_empty_document_marks_processed_without_failure(monkeypatch):
 def test_missing_target_fails_without_substitution(monkeypatch):
     refresh = _configure(monkeypatch)
     monkeypatch.setattr(refresh, "discover_documents", lambda url: [BASE])
-    monkeypatch.setattr(refresh, "get_active_rules", lambda: [])
+    monkeypatch.setattr(refresh, "load_all_active_rules", lambda: [])
 
     result = refresh.check_for_updates()
 
@@ -128,11 +156,12 @@ def test_atomic_update_failure_marks_nothing(monkeypatch):
     monkeypatch.setattr(refresh, "download_document", lambda document: {
         "title": document["title"], "url": document["url"], "local_path": "x.pdf",
         "sha256": "hash", "processed_sha256": None, "status": "CHANGED"})
-    monkeypatch.setattr(refresh, "process_pdf_document", lambda *args, **kwargs: [_rule()])
+    monkeypatch.setattr(refresh, "process_pdf_document",
+                        lambda *args, **kwargs: [_with_overlay(_extraction_rule())])
     marked = []
     monkeypatch.setattr(refresh, "mark_document_processed", lambda url, sha: marked.append(url))
-    monkeypatch.setattr(refresh, "update_rules",
-                        lambda rules: (_ for _ in ()).throw(RuntimeError("disk full")))
+    monkeypatch.setattr(refresh, "add_or_update_rule",
+                        lambda rule: (_ for _ in ()).throw(RuntimeError("disk full")))
 
     result = refresh.check_for_updates()
 

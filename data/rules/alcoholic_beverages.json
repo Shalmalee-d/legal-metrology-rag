@@ -1,0 +1,44 @@
+{
+  "category": "alcoholic_beverages",
+  "description": "Legal Metrology compliance rules applicable to beer, wine, spirits and other alcoholic packaged beverages.",
+  "rule_count": 1,
+  "rules": [
+    {
+      "rule_id": "LM_ALC_001",
+      "category": "alcoholic_beverages",
+      "title": "State Excise Law governs pricing declarations for alcoholic beverages",
+      "requirement": "For packages containing alcoholic beverages or spirituous liquor, the State Excise Laws and rules made thereunder applicable within the State in which the product is manufactured shall govern retail sale price and unit sale price declarations. Where the State excise laws and rules made thereunder do not provide for declaration of retail sale price, the provisions of the LM(PC) Rules apply.",
+      "applies_when": "Applies to packages of alcoholic beverages/spirituous liquor.",
+      "check_type": "conditional_alternative_regime",
+      "check_parameters": {},
+      "evidence_required": [
+        "state_excise_law_compliance"
+      ],
+      "source": [
+        {
+          "document": "230946_1732871433.pdf — G.S.R. 779(E), dated 2 November 2021 (LM(PC) Amendment Rules, 2021)",
+          "rule_or_section": "Rule 6(1)(e) proviso",
+          "page": null
+        },
+        {
+          "document": "GSR226_1732871458.pdf — G.S.R. 226(E), dated 28 March 2022 (amends LM(PC) Amendment Rules, 2021 before commencement)",
+          "rule_or_section": "Rule 6(11) proviso",
+          "page": null
+        },
+        {
+          "document": "2023_7_10_Medical_Devices_revision_of_prices_1733228304.pdf — DoCA letter I-10/17/2023-W&M dated 10.07.2023",
+          "rule_or_section": null,
+          "page": null
+        }
+      ],
+      "source_text": "Provided that for packages containing alcoholic beverages or spirituous liquor, the State Excise Laws and the rules made there under shall be applicable within the State in which it is manufactured and where the state excise laws and rules made there under do not provide for declaration of retail sale price, the provisions of these rules shall apply.",
+      "effective_from": null,
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "230946_1732871433.pdf — G.S.R. 779(E), dated 2 November 2021 (LM(PC) Amendment Rules, 2021)",
+    "GSR226_1732871458.pdf — G.S.R. 226(E), dated 28 March 2022 (amends LM(PC) Amendment Rules, 2021 before commencement)",
+    "2023_7_10_Medical_Devices_revision_of_prices_1733228304.pdf — DoCA letter I-10/17/2023-W&M dated 10.07.2023"
+  ]
+}

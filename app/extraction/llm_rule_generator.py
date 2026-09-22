@@ -57,6 +57,13 @@ OLLAMA_RESPONSE_SCHEMA: dict = {
                     "applies_to": {"type": ["object", "null"]},
                     "expected_value": {"type": ["string", "number", "boolean", "null"]},
                     "expected_unit": {"type": ["string", "null"]},
+                    "category": {"type": "string"},
+                    "title": {"type": "string"},
+                    "applies_when": {"type": "string"},
+                    "check_type": {"type": "string"},
+                    "check_parameters": {"type": "object"},
+                    "evidence_required": {"type": "array", "items": {"type": "string"}},
+                    "effective_from": {"type": ["string", "null"]},
                 },
                 "required": ["rule_id", "parameter", "condition", "requirement", "evidence_text"],
                 "additionalProperties": False,
@@ -322,7 +329,7 @@ Do NOT extract document metadata or administrative text as product rules. Return
 
 Use only: must_exist, must_not_exist, must_equal, must_be_greater_than, must_be_less_than, must_match. If you choose a comparison condition (must_be_less_than, must_be_greater_than, must_equal, or another numeric comparison), you MUST provide both expected_value and expected_unit. Never omit them and never put the numeric threshold only inside requirement; a bare value such as "50 kg" as the requirement is forbidden. If the source does not provide a clear numeric value AND unit supporting a comparison, DO NOT choose a comparison condition. Return {{"rules": []}} or use an appropriate non-comparison condition only when the source genuinely supports it. Write requirement as one complete actionable sentence, e.g. "Packages of agricultural farm produce up to 50 kg are covered under the Rules." Quote as evidence_text the contiguous operative sentence or clause containing shall, must, required, allowed, permitted, covered under the Rules, prohibited, or not permitted; never use a bare noun phrase such as "packages of agriculture farm produce upto 50 kg". Requirement and evidence MUST refer to the same threshold and the same regulatory effect: do not combine a 50 kg requirement with 25 kg evidence. When a chunk contains both (a) an exclusion or exception threshold and (b) an applicability or permission statement for the target product, do NOT automatically use the first numeric clause and do NOT select an exclusion clause merely because it contains "shall not apply" and a number; choose the clause describing the actual regulatory effect for the target product. Extract a rule only when the source states such an actionable effect; otherwise return {{"rules": []}}. Never invent or paraphrase evidence.
 
-Return JSON only as a single-line compact object with no markdown, no ```json fences, no explanations, no reasoning, no comments, and no trailing text. Return at most ONE concise high-confidence rule; prefer fewer precise rules over many weak rules, and never split one requirement into several rules. Each item has: {{"rule_id": str, "parameter": str, "condition": str, "requirement": str, "evidence_text": str}} plus applies_to only when supported, plus expected_value and expected_unit which are REQUIRED for comparison conditions. If the chunk contains no actionable compliance requirement, return {{"rules": []}} exactly (empty rules, return [] ).
+Return JSON only as a single-line compact object with no markdown, no ```json fences, no explanations, no reasoning, no comments, and no trailing text. Return at most ONE concise high-confidence rule; prefer fewer precise rules over many weak rules, and never split one requirement into several rules. Each item has: {{"rule_id": str, "parameter": str, "condition": str, "requirement": str, "evidence_text": str}} plus applies_to only when supported, plus expected_value and expected_unit which are REQUIRED for comparison conditions. Additionally always include the product-catalog overlay: {{"category": str, "title": str, "applies_when": str, "check_type": str}} with optional {{"check_parameters": object, "evidence_required": [str], "effective_from": str|null}}. Category is "common" for general rules or the exact product category filename stem (for example "food", "electronics", "medical_devices"). Title is a short human label; applies_when is one clause stating when the rule applies; check_type is a short snake_case effect label such as must_exist, must_not_exist, must_equal, must_be_greater_than, must_be_less_than, must_match, conditional_exemption, or permitted_practice. If the chunk contains no actionable compliance requirement, return {{"rules": []}} exactly (empty rules, return [] ).
 Evidence_text must be the complete contiguous source sentence or clause that establishes the same regulatory effect as the generated rule; do not paraphrase it. Before choosing evidence, compare parameter, condition, expected_value, and expected_unit against the proposed evidence span. The evidence must support the exact threshold and effect: a 50 kg rule must never use 25 kg exclusion evidence. When several numeric clauses exist, do not select one merely because it contains a number, "shall", "shall not apply", or a similar parameter; it must establish the actual rule being generated. For an applicability or permission rule, prefer the operative sentence stating that applicability or permission for the target product over an earlier exception or exclusion clause. Never build a rule from one sentence and evidence from a different regulatory effect. If no contiguous span directly supports the exact generated rule, return {{"rules": []}}. Evidence must not be a noun phrase or isolated fragment; it must contain enough of the operative sentence or clause to establish the rule. Keep evidence to one sentence or clause (about 250 characters or less); longer passages waste the output budget and risk truncation. Empty, invented, or unrelated evidence is invalid. Keep requirement concise (one sentence).
 Evidence_text MUST be copied verbatim from exactly one presented candidate below: the complete candidate text, not a fragment assembled from several candidates and never from an unlisted passage. A 50 kg rule must never cite the 25 kg candidate. If no candidate supports a valid actionable rule, return {{"rules": []}}. The full regulatory text above remains available for surrounding context such as applicability, definitions, and exceptions; candidates only highlight potentially normative spans and are not legal conclusions.
 
@@ -450,6 +457,12 @@ _MAX_REPORTED_REJECTIONS = 3
 _MAX_REJECTION_CHARS = 200
 
 
+_PRODUCT_OVERLAY_KEYS = (
+    "category", "title", "applies_when", "check_type",
+    "check_parameters", "evidence_required", "effective_from",
+)
+
+
 def _parse_rules(payload: Any, chunk: dict, source_document: str,
                  diagnostics: dict | None = None) -> list[ComplianceRule]:
     def _fail(kind: str, message: str) -> OllamaModelError:
@@ -498,6 +511,10 @@ def _parse_rules(payload: Any, chunk: dict, source_document: str,
                 if len(diagnostics["rejection_reasons"]) < _MAX_REPORTED_REJECTIONS:
                     diagnostics["rejection_reasons"].append("candidate is not a JSON object.")
             continue
+        # Product-catalog overlay rides alongside the extraction fields. It is
+        # validated at persistence time, never here, and never invented: only
+        # keys the model actually supplied are carried forward.
+        overlay = {key: candidate.pop(key) for key in _PRODUCT_OVERLAY_KEYS if key in candidate}
         # Source traceability belongs to the pipeline, not the LLM.
         candidate["source_document"] = source_document
         candidate["source_pages"] = chunk["source_pages"]
@@ -554,6 +571,7 @@ def _parse_rules(payload: Any, chunk: dict, source_document: str,
                     diagnostics["rejection_reasons"].append(
                         f"{rule.rule_id}: {product_errors[0]}"[:_MAX_REJECTION_CHARS])
             continue
+        rule._product_overlay = overlay
         rules.append(rule)
     return rules
 

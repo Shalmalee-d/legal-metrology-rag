@@ -41,7 +41,7 @@ def test_malformed_truncated_json_is_rejected_without_side_effects(monkeypatch, 
     monkeypatch.setattr(generator.httpx, "post", lambda *a, **k: _Response({"response": truncated}))
 
     # Isolate repository (autouse fixture already does, but assert explicitly).
-    prod_file = repository._resolve_rules_file()
+    prod_file = repository._resolve_rag_store()
     before = prod_file.read_bytes() if prod_file.exists() else None
 
     chunk = _chunk()

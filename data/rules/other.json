@@ -1,0 +1,33 @@
+{
+  "category": "other",
+  "description": "Legal Metrology compliance rules applicable to packaged commodities not fitting the other defined categories, including LPG cylinders.",
+  "rule_count": 1,
+  "rules": [
+    {
+      "rule_id": "LM_LPG_001",
+      "category": "other",
+      "title": "LPG cylinder check-weigher requirement",
+      "requirement": "All marketing companies, manufacturers, packers, importers, or distributors of Liquefied Petroleum Gas (LPG) cylinders must maintain a check weigher or non-automatic weighing instrument (digital or analogue) of Accuracy Class-III (max. 50 kg, e = 10 g) to check the weight of the LPG cylinder, and must provide the delivery man with equipment to measure or weigh the correct quantity of LPG delivered.",
+      "applies_when": "Applies to LPG cylinder marketing companies, manufacturers, packers, importers and distributors, effective 1 July 2013.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "check_weigher_class_iii_maintained",
+        "delivery_measuring_equipment_provided"
+      ],
+      "source": [
+        {
+          "document": "8_vii__0_1732861181.pdf — G.S.R. 359(E), dated 6 June 2013 (LM(PC) Amendment Rules, 2013)",
+          "rule_or_section": "Rule 18, new sub-rule (8)",
+          "page": null
+        }
+      ],
+      "source_text": "All the marketing companies, manufacturers, packers, importers or distributors of Liquefied Petroleum Gas cylinder shall maintain a check weigher or non-automatic weighing instrument, digital or analogue, of Accuracy class-III (Max. 50 kg, e=10g) to check the weight of the Liquefied Petroleum Gas cylinder.",
+      "effective_from": "2013-07-01",
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "8_vii__0_1732861181.pdf — G.S.R. 359(E), dated 6 June 2013 (LM(PC) Amendment Rules, 2013)"
+  ]
+}

@@ -83,5 +83,5 @@ def test_registry_operations_use_configured_location_consistently(tmp_path, monk
     import app.extraction.pdf_extractor as extractor
 
     assert str(fetcher._resolve_metadata_file()).startswith(str(tmp_path))
-    assert str(repository._resolve_rules_file()).startswith(str(tmp_path))
+    assert str(repository._resolve_rag_store()).startswith(str(tmp_path))
     assert str(extractor._resolve_extracted_dir()).startswith(str(tmp_path))

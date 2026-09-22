@@ -1,0 +1,32 @@
+{
+  "category": "agricultural_products",
+  "description": "Legal Metrology compliance rules applicable to agricultural/farm products and their packages.",
+  "rule_count": 1,
+  "rules": [
+    {
+      "rule_id": "LM_AGRI_001",
+      "category": "agricultural_products",
+      "title": "Agricultural farm produce packages up to 50 kg are covered (not exempt)",
+      "requirement": "Packages of agricultural farm produce up to 50 kg ARE covered under the LM(PC) Rules, 2011 (the rule 3(b) exemption applies only to farm produce sold in bags ABOVE 50 kg). Manufacturers/packers/importers are allowed to pack such produce in any quantity up to 50 kg, subject to compliance with the applicable declaration rules.",
+      "applies_when": "Applies to packages of agricultural farm produce of net quantity up to and including 50 kg.",
+      "check_type": "clarifying_applicability",
+      "check_parameters": {},
+      "evidence_required": [
+        "net_quantity_kg"
+      ],
+      "source": [
+        {
+          "document": "2023_3_6_farm_produce_upto_50_kg_as_per_PCR_1732871747.pdf — DoCA letter I-10/9/2023-W&M dated 06.03.2023",
+          "rule_or_section": null,
+          "page": null
+        }
+      ],
+      "source_text": "Therefore, the packages of agriculture farm produce upto 50 kg are covered under the Legal Metrology (Packaged Commodities) Rules, 2011. The manufacturers/ packers/ importers of these packages are allowed to pack in any quantity upto 50 kg as per rules.",
+      "effective_from": null,
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "2023_3_6_farm_produce_upto_50_kg_as_per_PCR_1732871747.pdf — DoCA letter I-10/9/2023-W&M dated 06.03.2023"
+  ]
+}

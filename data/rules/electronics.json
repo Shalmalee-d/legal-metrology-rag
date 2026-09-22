@@ -1,0 +1,145 @@
+{
+  "category": "electronics",
+  "description": "Legal Metrology compliance rules applicable to electronic products/devices.",
+  "rule_count": 6,
+  "rules": [
+    {
+      "rule_id": "LM_ELEC_001",
+      "category": "electronics",
+      "title": "Electronic products: manufacturer/packer/importer name on package; QR for address",
+      "requirement": "For an electronic product, the name of the manufacturer, packer or importer (as applicable) must be declared on the package itself. The declaration must also inform consumers to scan a QR code for the address and other related information, if such information is declared through the QR code and not declared on the package itself.",
+      "applies_when": "Applies to electronic products.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "manufacturer_packer_importer_name_on_package",
+        "qr_code_for_address_if_used"
+      ],
+      "source": [
+        {
+          "document": "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+          "rule_or_section": "Rule 6(1)(a), proviso substituted",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that in the case of an electronic product, the package of such product shall declare the name of the manufacturer or packer or importer, as the case may be, on the package itself, and such declaration shall also inform the consumers to scan the QR code for the address and other related information, if such information is declared through the QR Code and not declared on the package itself;",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_ELEC_002",
+      "category": "electronics",
+      "title": "Electronic products: QR code for common/generic name and multi-product details",
+      "requirement": "For an electronic product, the package must inform consumers to scan the QR code for the common or generic name of the commodity, and where the package contains more than one product, for the name and number or quantity of each product, if such information is declared through the QR code and not declared on the package itself.",
+      "applies_when": "Applies to electronic products containing more than one product or requiring generic-name disclosure via QR.",
+      "check_type": "conditional_alternative_declarations",
+      "check_parameters": {},
+      "evidence_required": [
+        "qr_code_for_generic_name_if_used"
+      ],
+      "source": [
+        {
+          "document": "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+          "rule_or_section": "Rule 6(1)(b), proviso substituted",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that in the case of an electronic product, the package of such product shall inform the consumers to scan the QR code for the common or generic name of the commodity and where such package contains more than one product, then for the name and number or quantity of each product...",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_ELEC_003",
+      "category": "electronics",
+      "title": "Electronic products: QR code for size and dimension",
+      "requirement": "For an electronic product, where size/dimension information is declared through a QR code and not on the package itself, the package must inform consumers to scan the QR code for the size and dimension of the commodity.",
+      "applies_when": "Applies to electronic products.",
+      "check_type": "conditional_alternative_declarations",
+      "check_parameters": {},
+      "evidence_required": [
+        "qr_code_for_size_dimension_if_used"
+      ],
+      "source": [
+        {
+          "document": "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+          "rule_or_section": "Rule 6(1)(f), proviso substituted",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that in the case of an electronic product, the package of such product, where such information is declared through the QR Code and not declared on the package itself, shall inform the consumers to scan the QR code for the size and dimension of the commodity;",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_ELEC_004",
+      "category": "electronics",
+      "title": "Electronic products: phone number and e-mail on package; QR for other info",
+      "requirement": "For an electronic product, the telephone number and e-mail address (consumer care details) must be declared on the package itself. The declaration must also inform consumers to scan a QR code for other related information, if such information is declared through the QR code and not declared on the package itself.",
+      "applies_when": "Applies to electronic products.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "phone_and_email_on_package",
+        "qr_code_for_other_info_if_used"
+      ],
+      "source": [
+        {
+          "document": "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+          "rule_or_section": "Rule 6(2), proviso substituted",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that in the case of an electronic product, the package of such product shall declare the telephone number and e-mail address on the package itself, and such declaration shall also inform the consumers to scan the QR code for other related information if such information is declared through the QR Code and not declared on the package itself.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_ELEC_005",
+      "category": "electronics",
+      "title": "Month/year of manufacture for electronic products, spare parts and accessories",
+      "requirement": "For electronic products, spare parts and accessories, the declaration of the month and year of manufacture must be specified anywhere on the retail package in a visible and clearly legible manner.",
+      "applies_when": "Applies to electronic products, spare parts, and accessories, effective 1 April 2024.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "month_year_of_manufacture_visible_legible"
+      ],
+      "source": [
+        {
+          "document": "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)",
+          "rule_or_section": "Rule 6(1)(d), proviso inserted",
+          "page": null
+        }
+      ],
+      "source_text": "Provided also that for electronic products, spare parts and accessories, the declaration of month and year of manufacture shall be specified anywhere on the retail package in a visible and clearly legible manner.",
+      "effective_from": "2024-04-01",
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_ELEC_006",
+      "category": "electronics",
+      "title": "Exemption for warranty-servicing spare parts/accessories not sold to end customers",
+      "requirement": "Spare parts and accessories used for the purpose of servicing under warranty, and not sold to end customers, are exempt from the month/year-of-manufacture declaration requirement of rule 6(1)(d).",
+      "applies_when": "Applies to spare parts/accessories used for warranty servicing that are not sold to end customers, effective 1 April 2024.",
+      "check_type": "conditional_exemption",
+      "check_parameters": {},
+      "evidence_required": [
+        "warranty_servicing_not_sold_to_end_customer"
+      ],
+      "source": [
+        {
+          "document": "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)",
+          "rule_or_section": "Rule 6(1)(d), proviso inserted",
+          "page": null
+        }
+      ],
+      "source_text": "Provided also that nothing contained in this clause shall apply to spare parts and accessories used for the purpose of servicing with a warranty and not sold to end customers.",
+      "effective_from": "2024-04-01",
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+    "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)"
+  ]
+}

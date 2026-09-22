@@ -2,10 +2,15 @@
 
 from threading import Lock, Thread
 
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 
 from app.refresh import check_for_updates, get_refresh_status, is_update_running
-from app.repository.rule_repository import get_active_rules
+from app.repository.rule_repository import (
+    CategoryNotFoundError,
+    list_categories,
+    load_applicable_rules,
+    load_category_rules,
+)
 
 
 router = APIRouter(prefix="/api")
@@ -43,5 +48,37 @@ def regulatory_knowledge_status() -> dict:
 
 @router.get("/rules/active")
 def active_rules() -> list[dict]:
-    """Provide active, validated RAG rules to API consumers."""
-    return [rule.model_dump() for rule in get_active_rules()]
+    """Provide active common product rules to API consumers."""
+    return [rule.model_dump() for rule in load_applicable_rules(None)]
+
+
+@router.get("/rules/categories")
+def rule_categories() -> list[str]:
+    """List product categories that have a rule file."""
+    return list_categories()
+
+
+@router.get("/rules/category/{category}")
+def category_rules(category: str) -> list[dict]:
+    """Provide active rules specific to one product category."""
+    from app.repository.rule_repository import is_applicable
+
+    try:
+        rules = [rule for rule in load_category_rules(category) if is_applicable(rule)]
+    except CategoryNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except ValueError as error:
+        raise HTTPException(status_code=500, detail=str(error)) from error
+    return [rule.model_dump() for rule in rules]
+
+
+@router.get("/rules/applicable/{category}")
+def applicable_rules(category: str) -> list[dict]:
+    """Provide active common rules plus one category's active rules."""
+    try:
+        rules = load_applicable_rules(category)
+    except CategoryNotFoundError as error:
+        raise HTTPException(status_code=404, detail=str(error)) from error
+    except ValueError as error:
+        raise HTTPException(status_code=500, detail=str(error)) from error
+    return [rule.model_dump() for rule in rules]

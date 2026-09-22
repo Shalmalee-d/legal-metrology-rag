@@ -1,0 +1,32 @@
+{
+  "category": "cosmetics",
+  "description": "Legal Metrology compliance rules applicable to cosmetic products, beauty products and toiletries.",
+  "rule_count": 1,
+  "rules": [
+    {
+      "rule_id": "LM_COSM_001",
+      "category": "cosmetics",
+      "title": "Veg/non-veg origin dot marking on soap, shampoo, toothpaste and toiletries",
+      "requirement": "Every package containing soap, shampoo, tooth paste and other cosmetics and toiletries must bear at the top of its principal display panel a red, or as the case may be brown, dot for products of non-vegetarian origin, and a green dot for products of vegetarian origin.",
+      "applies_when": "Applies to packages of soap, shampoo, toothpaste and other cosmetics/toiletries, effective 1 July 2014.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "veg_nonveg_dot_marking"
+      ],
+      "source": [
+        {
+          "document": "8_viii__0__1__1732870622.pdf — G.S.R. 137, dated 16 June 2014 (LM(PC) Amendment Rules, 2014) [extract, pages 730-731]",
+          "rule_or_section": "Rule 6, sub-rule (8)",
+          "page": null
+        }
+      ],
+      "source_text": "Every package containing soap, shampoos, tooth pastes and other cosmetics and toiletries shall bear at the top of its principal display panel a red or as the case may be, brown dot for products of non-vegetarian origin and a green dot for products of vegetarian origin.",
+      "effective_from": "2014-07-01",
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "8_viii__0__1__1732870622.pdf — G.S.R. 137, dated 16 June 2014 (LM(PC) Amendment Rules, 2014) [extract, pages 730-731]"
+  ]
+}

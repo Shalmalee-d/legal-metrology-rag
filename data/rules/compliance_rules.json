@@ -1,153 +1,510 @@
-[
-  {
-    "rule_id": "LM_PCR_001",
-    "parameter": "retail_sale_price",
-    "condition": "must_exist",
-    "applies_to": null,
-    "requirement": "The retail sale price must be printed on the package in the manner specified.",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      40,
-      42
-    ],
-    "evidence_text": "m) “retail sale price” means the maximum price at which the commodity in\npackaged form may be sold to the ultimate consumer and the price shall be\nprinted on the package in the manner given below\n\nit shall be ensured that all packages leaving the premises of\nmanufacturer for their destination shall have declaration of retail sale price on\nthem as required in this rule",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "21aa7b9ac43b362ddae09c47ef921bb0b87fddfe47490db0783abe3d1ff4de1e",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  },
-  {
-    "rule_id": "LM_PCR_002",
-    "parameter": "manufacturer/packer/importer name and address",
-    "condition": "must_exist",
-    "applies_to": null,
-    "requirement": "If a name and address of a company is mentioned on the label without any qualifying words 'manufactured by' or 'packed by', it shall be presumed that such name and address shall be that of the manufacturer",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      43
-    ],
-    "evidence_text": "label without any qualifying words 'manufactured by' or 'packed by', it shall be\npresumed that such name and address shall be that of the manufacturer and the\nliability shall be determined accordingly",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "717cbc3fa065a29485e5837d256df70a30a880076aec586201fce643980fac30",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  },
-  {
-    "rule_id": "LM_PCR_003",
-    "parameter": "package",
-    "condition": "must_exist",
-    "applies_to": null,
-    "requirement": "Every package must bear the name, address, telephone number, E-mail address, if available, of the person who can be or the office which can be contacted, in case of consumer complaints.",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      46,
-      53
-    ],
-    "evidence_text": "2) Every package shall bear the name, address, telephone number, E-mail\naddress, if available, of the person who can be or the office which can be,\ncontacted, in case of consumer complaints\n\n6) The declaration of quantity shall not contain any word or expression which\ntends to create an exagg'erated, misleading or inadequate impression as to the\nquantity of the commodity contained in the package, for example, words or",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "cfeba795916d872cc50bcd2589368143ca78e229a8686ee1fe1a5ad9b21f38f7",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  },
-  {
-    "rule_id": "LM_PCR_004",
-    "parameter": "declaration_of_quantity",
-    "condition": "must_exist",
-    "applies_to": null,
-    "requirement": "The declaration of quantity shall be expressed in terms of such unit of weight, measure or number or a combination of weight, measure or number as would give an accurate and adequate information to the consumer with regard to the quantity of the commodity contained in the package",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      52
-    ],
-    "evidence_text": "Manner in which declaration of quantity shall be.—(1) The declaration\nof quantity shall be expressed in terms of such unit of weight, measure or\nnumber or a combination of weight, measure or number as would give an\naccurate and adequate information to the consumer with regard to the quantity\nof the commodity contained in the package",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "db08dcf0ba8b55ffae32bc892c999e91e0c5bbfbc0dff4229e6bc7471501bbaa",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  },
-  {
-    "rule_id": "LM_PCR_005",
-    "parameter": "number_of_usable_sheets",
-    "condition": "must_exist",
-    "applies_to": null,
-    "requirement": "Packages containing sheets like aluminum foil, facial tissues, waxed paper, toilet paper, or any other type of sheet must include a statement of the number of usable sheets contained in the package",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      56
-    ],
-    "evidence_text": "In the case of a package containing sheets like aluminum\nfoil, facial tissues, waxed paper, toilet paper o\"r any other type of sheet, the\ndeclaration of quantity on the package shall also include a statement as to the\nnumber of usable sheets contained in the package and the dimensions of each",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "eb94bba1ca92e73739f66540948c0e96f4725328e4c07a2138a92cdfbaf14e16",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  },
-  {
-    "rule_id": "LM_PCR_006",
-    "parameter": "declaration of quantity",
-    "condition": "must_exist",
-    "applies_to": null,
-    "requirement": "References to the standard weight or measure related to the container's capability to hold a specific quantity of commodity or a class of commodities must be included in the declaration of quantity",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      57
-    ],
-    "evidence_text": "iv) When the use of a container is related by label references, the standard\nweight or measure, to the capability of the container to hold a specific quantity\nof commodity or a class of commodities such references shall be included in the\ndeclaration of quantity",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "93c8d905f07ce0d33c39a0be0126d2af2e31792e55a417272f38cca95b964ce6",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  },
-  {
-    "rule_id": "LM_PCR_007",
-    "parameter": "package_label",
-    "condition": "must_exist",
-    "applies_to": {
-      "package_type": "wholesale_package"
+{
+  "category": "common",
+  "description": "Common/general Legal Metrology (Packaged Commodities) rules that apply across product categories. These rules are evaluated first by the Rule Engine, before category-specific rules.",
+  "rule_count": 20,
+  "rules": [
+    {
+      "rule_id": "LM_PCR_001",
+      "category": "common",
+      "title": "Manufacturer/packer/importer name and complete address",
+      "requirement": "Every pre-packaged commodity must declare the name and complete address of the manufacturer, or, where the manufacturer is not the packer, the name and address of the manufacturer and packer, or the importer, as the case may be. The 'complete address' means the postal address at which the factory is situated or the company/firm is registered, or the street name, number (if any), city and State where the manufacturer/packer/importer carries on business, together with the PIN code.",
+      "applies_when": "Applies to all pre-packaged commodities covered by Chapter II of the LM(PC) Rules, 2011, EXCEPT: (a) food articles, for which Explanation III to rule 6(1)(a) disapplies this clause in favour of the Food Safety and Standards Act, 2006 (see LM_FOOD_001); (b) packages excluded under rule 3 (see LM_PCR_019); (c) subject to the relaxed size threshold for very small packages (see LM_PCR_017).",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "manufacturer_or_packer_or_importer_name",
+        "complete_address"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 6(1)(a) Explanation III; Rule 10(1) Explanation 1",
+          "page": null
+        }
+      ],
+      "source_text": "Explanation III.- In respect of packages containing food articles, the provisions of this clause shall not apply... 'complete address' means the postal address at which the factory is situated or company or firm is registered... together with the Postal Index Number [PIN] Code.",
+      "effective_from": null,
+      "status": "active"
     },
-    "requirement": "Every wholesale package must have a legible, definite, plain and conspicuous declaration including the name and address of the manufacturer or importer or where the manufacturer or importer is not the packer, of the packer",
-    "expected_value": null,
-    "expected_unit": null,
-    "source_document": "Download The Legal Metrology (Packaged Commodities) Rules, 2011",
-    "source_pages": [
-      67
-    ],
-    "evidence_text": "Every wholesale package shall bear thereon a legible, definite, plain and\nconspicuous declaration 85 to —\n(व) The name and address of the manufacturer or importer or where the\nmanufacturer or importer is not the packer, of the packer",
-    "effective_from": null,
-    "effective_until": null,
-    "status": "active",
-    "version": "48cd6acdb5475709631b741d71b2948d45713e7e8758ce531c19948a7e31f890",
-    "source_identity": "a51b750210bdc3264ad147bd6f1086795786dc48a50710b879b07adef992f229",
-    "source_document_id": "http://consumeraffairs.gov.in/public/upload/files/8_1732871406.pdf",
-    "supersedes_source_identity": null
-  }
-]
+    {
+      "rule_id": "LM_PCR_002",
+      "category": "common",
+      "title": "Country of origin/manufacture/assembly for imported products",
+      "requirement": "The name of the country of origin, manufacture, or assembly must be mentioned on the package in the case of imported products.",
+      "applies_when": "Applies when the commodity is imported.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "country_of_origin"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 6(1)(aa)",
+          "page": null
+        }
+      ],
+      "source_text": "The name of the country of origin or manufacture or assembly in case of imported products shall be mentioned on the package;",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_003",
+      "category": "common",
+      "title": "Common or generic name of the commodity",
+      "requirement": "The package must declare the common or generic name of the commodity, and where the package contains more than one product, the name and number or quantity of each product.",
+      "applies_when": "Applies to all pre-packaged commodities covered by Chapter II (subject to the electronic-product QR-code proviso, see LM_ELEC_002).",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "common_or_generic_name"
+      ],
+      "source": [
+        {
+          "document": "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+          "rule_or_section": "Rule 6(1)(b) — base clause inferred from text of substituted proviso",
+          "page": null
+        }
+      ],
+      "source_text": "...the package of such product shall inform the consumers to scan the QR code for the common or generic name of the commodity and where such package contains more than one product, then for the name and number or quantity of each product...",
+      "effective_from": null,
+      "status": "active",
+      "confidence": "medium — the base clause (b) text itself was not directly quoted in the provided documents; its subject-matter is inferred from the quoted proviso that amends it."
+    },
+    {
+      "rule_id": "LM_PCR_004",
+      "category": "common",
+      "title": "Best before / use by date declaration",
+      "requirement": "If a package contains a commodity which may become unfit for human consumption after a period of time, the label must also state the 'best before or use by the date, month and year'.",
+      "applies_when": "Applies unless a provision in this regard is made in any other law for the time being in force.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "best_before_or_use_by_date"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 6(1)(da) and Explanation",
+          "page": null
+        }
+      ],
+      "source_text": "If a package contains a commodity which may become unfit for human consumption after a period of time, the 'best before or use by the date, month and year' shall also be mentioned on the label: Provided that nothing in this clause shall apply if a provision in this regard is made in any other law.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_005",
+      "category": "common",
+      "title": "Retail sale price (MRP) declaration",
+      "requirement": "The retail sale price of the package must be declared and must clearly indicate that it is the maximum retail price inclusive of all taxes, in Indian currency.",
+      "applies_when": "Applies to all pre-packaged commodities covered by Chapter II. For alcoholic beverages/spirituous liquor, State Excise Laws apply within the manufacturing State (see LM_ALC_001) where those laws provide for RSP declaration; where they do not, these Rules apply. Where the RSP of an essential commodity is fixed/notified by a Competent Authority under the Essential Commodities Act, 1955 (e.g. NPPA), that fixed price applies.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "retail_sale_price",
+        "inclusive_of_taxes_statement"
+      ],
+      "source": [
+        {
+          "document": "230946_1732871433.pdf — G.S.R. 779(E), dated 2 November 2021 (LM(PC) Amendment Rules, 2021)",
+          "rule_or_section": "Rule 6(1)(e)",
+          "page": null
+        },
+        {
+          "document": "2023_7_10_Medical_Devices_revision_of_prices_1733228304.pdf — DoCA letter I-10/17/2023-W&M dated 10.07.2023",
+          "rule_or_section": null,
+          "page": null
+        }
+      ],
+      "source_text": "the retail sale price of the package, shall clearly indicate that it is the maximum retail price inclusive of all taxes in Indian currency: Provided that for packages containing alcoholic beverages or spirituous liquor, the State Excise Laws... Provided further that if the retail sale price of any essential commodity is fixed and notified by the Competent Authority under the Essential Commodities Act, 1955 the same shall apply.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_006",
+      "category": "common",
+      "title": "Unit sale price declaration",
+      "requirement": "The unit sale price of every pre-packaged commodity must be declared, rounded off to the nearest two decimal places of the rupee, as: per gram (net qty < 1 kg) or per kilogram (>= 1 kg); per centimetre (net length < 1 m) or per metre (>= 1 m); per millilitre (net volume < 1 L) or per litre (>= 1 L); or per number/unit where sold by number.",
+      "applies_when": "Applies to all pre-packaged commodities. NOT required where the retail sale price equals the unit sale price. NOT required for a combination package, group package or multi-piece package (as defined in rule 2). For alcoholic beverages/spirituous liquor, State Excise Laws apply within the manufacturing State.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "unit_sale_price"
+      ],
+      "source": [
+        {
+          "document": "GSR226_1732871458.pdf — G.S.R. 226(E), dated 28 March 2022 (amends LM(PC) Amendment Rules, 2021 before commencement)",
+          "rule_or_section": "Rule 6(11)",
+          "page": null
+        },
+        {
+          "document": "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)",
+          "rule_or_section": "Rule 6(11), further proviso",
+          "page": null
+        }
+      ],
+      "source_text": "The unit sale price in rupees, rounded off to the nearest two decimal place, shall be declared on every pre-packaged commodities... Provided also that declaration of unit sale price is not required for a combination package or a group package or a multi-piece package, under these rules or under any other law for the time being in force.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_007",
+      "category": "common",
+      "title": "Declaration for items sold by number",
+      "requirement": "For items sold by number, the package must state the number, unit, piece, pair, set, or such other word which represents the quantity in the package.",
+      "applies_when": "Applies to pre-packaged commodities sold by number/count.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "quantity_by_number_declaration"
+      ],
+      "source": [
+        {
+          "document": "230946_1732871433.pdf — G.S.R. 779(E), dated 2 November 2021 (LM(PC) Amendment Rules, 2021)",
+          "rule_or_section": "Rule 13(5)(ii)",
+          "page": null
+        }
+      ],
+      "source_text": "for items sold by number, the number or unit or piece or pair or set or such other word which represents the quantity in the package shall be mentioned.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_008",
+      "category": "common",
+      "title": "Additional voluntary declarations permitted",
+      "requirement": "A manufacturer, packer or importer may additionally declare on the package: (a) a barcode, GTIN or QR code; (b) an 'e-code' for net quantity assurance and other required declarations, obtained in the manner specified by the Central Government; (c) logos of authorised Government schemes such as Swachh Bharat Mission.",
+      "applies_when": "Optional/permissive — applies to any pre-packaged commodity; presence of such marks does not itself create a compliance failure and is not a substitute for mandatory declarations (except where a specific QR-code proviso for electronic products applies — see LM_ELEC_001-004).",
+      "check_type": "may_include",
+      "check_parameters": {},
+      "evidence_required": [
+        "barcode_or_qr_or_gtin",
+        "e_code",
+        "government_scheme_logo"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 6(4A)",
+          "page": null
+        }
+      ],
+      "source_text": "Nothing in this rule shall preclude a manufacturer or packer or importer to declare the following on the package, in addition to the mandatory declarations- (a) Barcode or GTIN or QR Code; (b) 'e-code' for net quantity assurance...; (c) logos of Government schemes...",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_009",
+      "category": "common",
+      "title": "E-commerce display of mandatory declarations",
+      "requirement": "An e-commerce entity must ensure that the mandatory declarations specified under rule 6(1), except the month and year in which the commodity is manufactured or packed, are displayed on the digital/electronic network used for the e-commerce transaction.",
+      "applies_when": "Applies when the pre-packaged commodity is sold through an e-commerce channel. For the marketplace model of e-commerce, responsibility for correctness of the declarations lies with the manufacturer/seller/dealer/importer where the e-commerce entity's role is limited to an intermediary function (conditions specified in the source) and it observes due diligence under the IT Act, 2000; this intermediary protection is withdrawn if the entity conspired/abetted the unlawful act, or failed to expeditiously remove unlawful content on notice.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "mandatory_declarations_on_listing"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 6(10)",
+          "page": null
+        }
+      ],
+      "source_text": "An E-Commerce entity shall ensure that the mandatory declarations as specified in sub-rule (1), except the month and year in which the commodity is manufactured or packed, shall be displayed on the digital and electronic network used for e-commerce transactions...",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_010",
+      "category": "common",
+      "title": "E-commerce country-of-origin searchable filter for imported products",
+      "requirement": "Every e-commerce entity offering for sale any imported product must ensure that the product listing of such imported product contains a searchable and sortable filter specifying the country of origin.",
+      "applies_when": "Applies to imported products offered for sale via e-commerce. Effective from 1 July 2027 (not yet in force as of the date of this analysis).",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "country_of_origin_filter_on_listing"
+      ],
+      "source": [
+        {
+          "document": "2026_4_27_PCR_2nd_COO_from_1_7_2027_1777348487.pdf — G.S.R. 312(E), dated 27 April 2026 (LM(PC) Second Amendment Rules, 2026), effective 1 July 2027",
+          "rule_or_section": "Rule 6(10A) as substituted",
+          "page": null
+        }
+      ],
+      "source_text": "Every e-commerce entity offering for sale any imported product shall, with effect from the 1st day of July, 2027, ensure that the product listing of such imported product contains a searchable and sortable filter specifying the country of origin.",
+      "effective_from": "2027-07-01",
+      "status": "scheduled"
+    },
+    {
+      "rule_id": "LM_PCR_011",
+      "category": "common",
+      "title": "Numeral/letter height for mandatory declarations (Table-I)",
+      "requirement": "The height of any numeral and letter used in a declaration required under the Rules must comply with Table-I: PDP area <=50 cm2 -> min 1.0mm (1.5mm if blown/formed/molded); 50-100 cm2 -> 1.5mm (3.0mm); 100-500 cm2 -> 2.5mm (4.0mm); 500-2500 cm2 -> 4.0mm (6.0mm); >2500 cm2 -> 6.0mm (6.0mm).",
+      "applies_when": "Applies to all mandatory declarations on pre-packaged commodities, EXCEPT medical devices (governed instead by the Medical Devices Rules, 2017 — see LM_MED_002), and except where rule 7(5) exempts the package because equivalent information is required under another law (net weight, RSP, expiry/best-before/use-by date, and consumer-care details remain subject to this sizing rule regardless).",
+      "check_type": "size_threshold",
+      "check_parameters": {
+        "table": [
+          {
+            "pdp_area_cm2": "<50",
+            "min_height_mm": 1.0,
+            "min_height_mm_molded": 1.5
+          },
+          {
+            "pdp_area_cm2": "50-100",
+            "min_height_mm": 1.5,
+            "min_height_mm_molded": 3.0
+          },
+          {
+            "pdp_area_cm2": "100-500",
+            "min_height_mm": 2.5,
+            "min_height_mm_molded": 4.0
+          },
+          {
+            "pdp_area_cm2": "500-2500",
+            "min_height_mm": 4.0,
+            "min_height_mm_molded": 6.0
+          },
+          {
+            "pdp_area_cm2": ">2500",
+            "min_height_mm": 6.0,
+            "min_height_mm_molded": 6.0
+          }
+        ]
+      },
+      "evidence_required": [
+        "numeral_letter_height_mm"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 7(2) and Table-I",
+          "page": null
+        }
+      ],
+      "source_text": "The height of any numeral and letter in the declaration required under these rules shall be as per Table-I.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_012",
+      "category": "common",
+      "title": "Numeral/letter width requirement",
+      "requirement": "The width of the letter or numeral used in a declaration shall not be less than one-third of its height, except for the numeral '1' and the letters 'i', 'I' and 'l'.",
+      "applies_when": "Applies to all mandatory declarations, except medical devices (see LM_MED_003).",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "numeral_letter_width_ratio"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 7(3)",
+          "page": null
+        }
+      ],
+      "source_text": "The width of the letter or numeral shall not be less than one third of its height, except in the case of numeral '1' and letters (i), (I) and (l);",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_013",
+      "category": "common",
+      "title": "Principal Display Panel (PDP) area determination",
+      "requirement": "The area used to determine numeral/letter size (excluding top/bottom, flange of cans, and neck/shoulder of bottles and jars) is determined as: (a) rectangular package — height x width of the side considered the PDP; (b) cylindrical/near-cylindrical package — 40% of (height x circumference); (c) any other shape — 40% of the total surface area, or the area considered to be the PDP.",
+      "applies_when": "Applies wherever PDP area must be computed for the purpose of LM_PCR_011.",
+      "check_type": "computation_rule",
+      "check_parameters": {},
+      "evidence_required": [
+        "pdp_area_cm2"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 7(4)",
+          "page": null
+        }
+      ],
+      "source_text": "The area not including the top, bottom, flange at top and bottom of cans, and shoulders and neck of bottle and jars shall be determined in the following manner...",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_014",
+      "category": "common",
+      "title": "Exemption from declaration-size rules where covered by other law",
+      "requirement": "Except for the size of numerals/letters used for net weight, retail sale price, date of expiry/best-before/use-by date (where applicable), and consumer-care details, rules 7(1)-(4) (declaration sizing) do not apply to a package if the information required under rule 7 is also required to be given under any other law currently in force.",
+      "applies_when": "Applies to pre-packaged commodities whose required declarations are also mandated under another law.",
+      "check_type": "conditional_exemption",
+      "check_parameters": {},
+      "evidence_required": [
+        "applicable_other_law"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 7(5)",
+          "page": null
+        }
+      ],
+      "source_text": "Except size of the numbers and letters for declaring net weight, retail sale price, date of expiry or best before or use by date... and consumer service details, the provisions under sub-rules (1) to (4) shall not apply to a package if the information to be specified on such package under this rule is also required to be given by or under any other law for the time being in force.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_015",
+      "category": "common",
+      "title": "Inner package declaration exemption",
+      "requirement": "No declarations are required on the inner package if the outer package contains all the declarations required under these Rules.",
+      "applies_when": "Applies where a package consists of an outer package containing multiple inner packages, and the outer package already carries all required declarations.",
+      "check_type": "conditional_exemption",
+      "check_parameters": {},
+      "evidence_required": [
+        "outer_package_declarations_complete"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 9(3), proviso",
+          "page": null
+        }
+      ],
+      "source_text": "Provided that, if the outer package contains all declarations required under these rules, no such declarations on the inner package is required.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_016",
+      "category": "common",
+      "title": "Small-package (<=10 cubic cm) relaxation threshold",
+      "requirement": "The relaxation for very small packages under the first proviso to rule 10(1) applies to packages of net content 10 cubic centimetres or less (raised from the earlier threshold of 5 cubic centimetres).",
+      "applies_when": "Applies to packages with net content <=10 cm3.",
+      "check_type": "size_threshold",
+      "check_parameters": {
+        "threshold_cm3": 10
+      },
+      "evidence_required": [
+        "net_content_cm3"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 10(1), first proviso",
+          "page": null
+        }
+      ],
+      "source_text": "in the first proviso for the figures, words and letters '5 cubic cm or less', the figures, words and letters '10 cubic cm or less' shall be substituted;",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_017",
+      "category": "common",
+      "title": "Chapter II applicability exclusions",
+      "requirement": "The mandatory-declaration provisions of Chapter II of the LM(PC) Rules, 2011 do NOT apply to: (a) packages of commodities containing a quantity of more than 25 kilogram or 25 litre; (b) cement, fertilizer, and agricultural farm produce sold in bags above 50 kilogram; and (c) packaged commodities meant for industrial consumers or institutional consumers.",
+      "applies_when": "This is an applicability/exclusion rule to be checked before applying any other Chapter II declaration rule to a given package.",
+      "check_type": "exclusion",
+      "check_parameters": {},
+      "evidence_required": [
+        "package_net_quantity",
+        "consumer_type",
+        "commodity_type"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 3 (substituted)",
+          "page": null
+        }
+      ],
+      "source_text": "3. Application of Chapter.- The provisions of this chapter shall not apply to- (a) packages of commodities containing quantity of more than 25 kilogram or 25 litre; (b) cement, fertilizer and agricultural farm produce sold in bags above 50 kilogram; and (c) packaged commodities meant for industrial consumers or institutional consumers.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_018",
+      "category": "common",
+      "title": "Wholesale dealer sale to industrial/institutional consumers",
+      "requirement": "A wholesale dealer is permitted to sell pre-packaged commodities directly to industrial and institutional consumers.",
+      "applies_when": "Applies to wholesale dealers of pre-packaged commodities.",
+      "check_type": "permitted_practice",
+      "check_parameters": {},
+      "evidence_required": [
+        "buyer_type"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 18(1A)",
+          "page": null
+        }
+      ],
+      "source_text": "The wholesale dealer shall be allowed to sell the pre-packaged commodities directly to the industrial and institutional consumers.",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_019",
+      "category": "common",
+      "title": "Prohibition on differential MRP via unfair trade practice",
+      "requirement": "Unless otherwise specifically provided under any other law, no manufacturer, packer or importer shall declare different maximum retail prices on an identical pre-packaged commodity by adopting a restrictive or unfair trade practice as defined under the Consumer Protection Act.",
+      "applies_when": "Applies to manufacturers/packers/importers of identical pre-packaged commodities.",
+      "check_type": "prohibition",
+      "check_parameters": {},
+      "evidence_required": [
+        "mrp_consistency_across_identical_commodity"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 18(2A)",
+          "page": null
+        }
+      ],
+      "source_text": "no manufacturer or packer or importer, shall declare different maximum retail prices on an identical pre-packaged commodity by adopting a restrictive trade practice or unfair trade practice...",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_PCR_020",
+      "category": "common",
+      "title": "Grouped promotional retail packages",
+      "requirement": "When one or more packages intended for retail sale are grouped together to be sold as a retail package on a promotional offer, every package in the group must comply with the provisions of rule 6 (mandatory declarations).",
+      "applies_when": "Applies to promotional/grouped retail packaging.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "group_member_declarations_compliant"
+      ],
+      "source": [
+        {
+          "document": "230946_1732871433.pdf — G.S.R. 779(E), dated 2 November 2021 (LM(PC) Amendment Rules, 2021)",
+          "rule_or_section": "Rule 4(2), as inserted",
+          "page": null
+        },
+        {
+          "document": "8_v__0_1732861119.pdf — G.S.R. 427(E), dated 5 June 2012 (LM(PC) Amendment Rules, 2012)",
+          "rule_or_section": "Rule 5(2), as inserted (pre-2021 numbering)",
+          "page": null
+        }
+      ],
+      "source_text": "When one or more packages intended for retail sale are grouped together for being sold as a retail package on promotional offer, every package of the group shall comply with provisions of rule 6.",
+      "effective_from": null,
+      "status": "active"
+    }
+  ],
+  "sources": [
+    "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+    "2023_6_23_QR_Code_PCR_amendment_1732871827.pdf — G.S.R. 456(E), dated 23 June 2023 (LM(PC) Amendment Rules, 2023 - QR Code)",
+    "230946_1732871433.pdf — G.S.R. 779(E), dated 2 November 2021 (LM(PC) Amendment Rules, 2021)",
+    "2023_7_10_Medical_Devices_revision_of_prices_1733228304.pdf — DoCA letter I-10/17/2023-W&M dated 10.07.2023",
+    "GSR226_1732871458.pdf — G.S.R. 226(E), dated 28 March 2022 (amends LM(PC) Amendment Rules, 2021 before commencement)",
+    "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)",
+    "2026_4_27_PCR_2nd_COO_from_1_7_2027_1777348487.pdf — G.S.R. 312(E), dated 27 April 2026 (LM(PC) Second Amendment Rules, 2026), effective 1 July 2027",
+    "8_v__0_1732861119.pdf — G.S.R. 427(E), dated 5 June 2012 (LM(PC) Amendment Rules, 2012)"
+  ],
+  "extraction_notes": "Canonical single copies of general packaged-commodity declaration/applicability rules, consolidated from the source-derived per-category database. Category files no longer repeat these rules."
+}

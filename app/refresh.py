@@ -26,7 +26,11 @@ from app.fetcher.document_fetcher import (
     download_document,
     mark_document_processed,
 )
-from app.repository.rule_repository import get_active_rules, update_rules
+from app.repository.rule_repository import (
+    add_or_update_rule,
+    load_all_active_rules,
+    to_product_rule,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -56,10 +60,19 @@ def get_refresh_status() -> dict:
     status.update(
         {
             "update_in_progress": is_update_running(),
-            "active_rule_count": len(get_active_rules()),
+            "active_rule_count": _active_count(),
         }
     )
     return status
+
+
+def _active_count() -> int:
+    """Curated active-rule count that never breaks status reporting."""
+    try:
+        return len(load_all_active_rules())
+    except ValueError:
+        logger.warning("Curated catalog unreadable while counting active rules.")
+        return 0
 
 
 def _remember(result: dict) -> dict:
@@ -93,14 +106,13 @@ def check_for_updates() -> dict:
                 "status": "failed", "checked_at": checked_at,
                 "documents_checked": 2, "documents_changed": 0,
                 "unchanged_documents": 0, "rules_updated": False,
-                "active_rule_count": len(get_active_rules()),
+                "active_rule_count": _active_count(),
                 "errors": [str(error)],
                 "message": str(error),
             })
 
         documents_changed = 0
         unchanged_documents = 0
-        staged: list = []
         processed: list[tuple[str, str]] = []
         errors: list[str] = []
         document_results: list[dict] = []
@@ -144,11 +156,31 @@ def check_for_updates() -> dict:
                                                  "candidates": outcome.get("candidate_count", 0)})
                         continue
                     raise
-                staged.extend(rules)
+                persisted = {"added": 0, "updated": 0, "noop": 0}
+                rule_errors: list[str] = []
+                for rule in rules:
+                    try:
+                        product = to_product_rule(
+                            rule, source_title=record["title"],
+                            source_pages=rule.source_pages,
+                        )
+                        action = add_or_update_rule(product)["action"]
+                        if action == "added":
+                            persisted["added"] += 1
+                        elif action == "updated":
+                            persisted["updated"] += 1
+                        else:
+                            persisted["noop"] += 1
+                    except Exception as error:  # noqa: BLE001 - per-rule isolation
+                        rule_errors.append(f"{getattr(rule, 'rule_id', '?')}: {error}")
+                if rule_errors:
+                    raise ValueError(
+                        "Some extracted rules could not be persisted: "
+                        + "; ".join(rule_errors))
                 processed.append((record.get("url", target["url"]), record["sha256"]))
                 document_results.append({"title": title, "url": target["url"],
                                          "outcome": "SUCCESS_WITH_RULES",
-                                         "rules": len(rules)})
+                                         "rules": len(rules), **persisted})
                 logger.info("DOCUMENT_UPDATED: %s rules=%s", title, len(rules))
             except Exception as error:  # noqa: BLE001 - per-document isolation
                 logger.exception("REFRESH_FAILED: %s", title)
@@ -161,16 +193,20 @@ def check_for_updates() -> dict:
                 "status": "failed", "checked_at": checked_at,
                 "documents_checked": 2, "documents_changed": documents_changed,
                 "unchanged_documents": unchanged_documents, "rules_updated": False,
-                "active_rule_count": len(get_active_rules()),
+                "active_rule_count": _active_count(),
                 "errors": errors, "document_results": document_results,
                 "message": "; ".join(errors),
             })
         rules_updated = False
-        if staged:
-            repository_result = update_rules(staged) or {}
+        rules_added_total = 0
+        rules_updated_total = 0
+        for entry in document_results:
+            rules_added_total += entry.get("added", 0)
+            rules_updated_total += entry.get("updated", 0)
+        if rules_added_total or rules_updated_total:
             rules_updated = True
-            logger.info("REPOSITORY_UPDATED rules=%s superseded=%s",
-                        repository_result.get("rules_added"), repository_result.get("rules_superseded"))
+            logger.info("REPOSITORY_UPDATED added=%s updated=%s",
+                        rules_added_total, rules_updated_total)
         for url, sha256 in processed:
             mark_document_processed(url, sha256)
         if documents_changed:
@@ -178,7 +214,7 @@ def check_for_updates() -> dict:
                 "status": "updated", "checked_at": checked_at,
                 "documents_checked": 2, "documents_changed": documents_changed,
                 "unchanged_documents": unchanged_documents, "rules_updated": rules_updated,
-                "active_rule_count": len(get_active_rules()),
+                "active_rule_count": _active_count(),
                 "errors": [], "document_results": document_results,
                 "message": "Regulatory rules were updated." if rules_updated else
                            "Documents changed but yielded no new rules.",
@@ -187,7 +223,7 @@ def check_for_updates() -> dict:
             "status": "up_to_date", "checked_at": checked_at,
             "documents_checked": 2, "documents_changed": 0,
             "unchanged_documents": unchanged_documents, "rules_updated": False,
-            "active_rule_count": len(get_active_rules()),
+            "active_rule_count": _active_count(),
             "errors": [], "document_results": document_results,
             "message": "Rules are up to date.",
         })
@@ -197,7 +233,7 @@ def check_for_updates() -> dict:
             "status": "failed", "checked_at": checked_at,
             "documents_checked": 0, "documents_changed": 0,
             "unchanged_documents": 0, "rules_updated": False,
-            "active_rule_count": len(get_active_rules()),
+            "active_rule_count": _active_count(),
             "errors": [str(error)],
             "message": str(error),
         })

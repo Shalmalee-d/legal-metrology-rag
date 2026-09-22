@@ -1,0 +1,72 @@
+{
+  "category": "textiles_and_apparel",
+  "description": "Legal Metrology compliance rules applicable to clothing, garments, hosiery and textiles.",
+  "rule_count": 2,
+  "rules": [
+    {
+      "rule_id": "LM_TEX_001",
+      "category": "textiles_and_apparel",
+      "title": "Loose/open sale of garments and hosiery — alternative declaration regime",
+      "requirement": "Garments or hosiery sold loose or open at the point of sale, in a manner that allows the consumer to inspect the product before buying, are exempt from standard pre-packaged declarations PROVIDED the product carries: (i) name and address of the manufacturer/marketer/brand owner/importer, with country of origin/manufacture for imported products; (ii) consumer care e-mail ID and phone number; (iii) size in metric notation (cm or m) and/or with internationally recognizable size indicators such as S, M, L, XL, XXL, XXXL; (iv) maximum retail price of the package, inclusive of all taxes, in Indian currency. This exemption applies to finished products only. If sold via e-commerce, the same information must be displayed on the e-commerce website. A manufacturer/packer/importer may voluntarily declare this information with immediate effect regardless of the commencement date.",
+      "applies_when": "Applies to garments/hosiery sold loose or open for pre-purchase inspection, effective 1 January 2023 (item (iii) wording updated with effect from the 2023 amendment). Consistent with earlier (2016/2017) departmental advisory guidance on the same subject.",
+      "check_type": "conditional_alternative_declarations",
+      "check_parameters": {},
+      "evidence_required": [
+        "manufacturer_address",
+        "consumer_care_contact",
+        "size_declaration",
+        "mrp_declaration"
+      ],
+      "source": [
+        {
+          "document": "2022_3rd_amendment_in_PCR_Garments_1733228786.pdf — G.S.R. 648(E), dated 22 August 2022 (LM(PC) Third Amendment Rules, 2022)",
+          "rule_or_section": "Rule 26, new clause (f)",
+          "page": null
+        },
+        {
+          "document": "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)",
+          "rule_or_section": "Rule 26(f), first proviso item (iii) substituted",
+          "page": null
+        },
+        {
+          "document": "LM_Advisory_for_Readymade_Garments_0_1732710356.pdf — DoCA letters WM-10(5)/2016 dated 16.12.2016 and 31.3.2017",
+          "rule_or_section": null,
+          "page": null
+        }
+      ],
+      "source_text": "(f) such commodities being a garment or hosiery is sold in loose or open at the point of sale in such manner that the consumer can inspect the products before buying: Provided that such product shall bear the following details...",
+      "effective_from": "2023-01-01",
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_TEX_002",
+      "category": "textiles_and_apparel",
+      "title": "Thread sold in coil to handloom weavers — exemption",
+      "requirement": "Any thread which is sold in coil to handloom weavers is exempt under rule 26 of the LM(PC) Rules, 2011.",
+      "applies_when": "Applies to thread sold in coil form specifically to handloom weavers.",
+      "check_type": "exclusion",
+      "check_parameters": {},
+      "evidence_required": [
+        "buyer_type",
+        "product_form"
+      ],
+      "source": [
+        {
+          "document": "8_ix__0_1732870718.pdf — G.S.R. 870(E), dated 4 December 2014 (LM(PC) Second Amendment Rules, 2014)",
+          "rule_or_section": "Rule 26, clause inserted after then-existing clause (d)",
+          "page": null
+        }
+      ],
+      "source_text": "(e.) any thread which is sold in coil to handloom weavers.",
+      "effective_from": null,
+      "status": "active",
+      "confidence": "The clause letter used in the 2014 source ('after clause (d)') may have shifted due to later renumbering of rule 26 in subsequent amendments (e.g., 2017 omission of a clause (d)); the underlying exemption itself is not shown as repealed in any provided document."
+    }
+  ],
+  "sources": [
+    "2022_3rd_amendment_in_PCR_Garments_1733228786.pdf — G.S.R. 648(E), dated 22 August 2022 (LM(PC) Third Amendment Rules, 2022)",
+    "2023_10_6_amendment_in_PCR_1732871982.pdf — G.S.R. 722(E), dated 6 October 2023 (LM(PC) Amendment Rules, 2023)",
+    "LM_Advisory_for_Readymade_Garments_0_1732710356.pdf — DoCA letters WM-10(5)/2016 dated 16.12.2016 and 31.3.2017",
+    "8_ix__0_1732870718.pdf — G.S.R. 870(E), dated 4 December 2014 (LM(PC) Second Amendment Rules, 2014)"
+  ]
+}

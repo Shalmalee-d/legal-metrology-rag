@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, PrivateAttr, field_validator
 
 
 class ComplianceRule(BaseModel):
@@ -28,6 +28,12 @@ class ComplianceRule(BaseModel):
     # the human-readable title so a title correction does not orphan rules.
     source_document_id: Optional[str] = None
     supersedes_source_identity: Optional[str] = None
+
+    # Product-catalog overlay supplied by the model alongside the extraction
+    # fields (category, title, applies_when, check_type, ...). Private: never
+    # validated, serialized, or compared as part of the extraction schema.
+    # The repository conversion reads it when building a ProductRule.
+    _product_overlay: dict[str, Any] | None = PrivateAttr(default=None)
 
     @field_validator("rule_id", "parameter", "condition", "source_document", "evidence_text")
     @classmethod

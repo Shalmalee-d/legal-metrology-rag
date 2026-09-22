@@ -1,0 +1,79 @@
+{
+  "category": "food",
+  "description": "Legal Metrology compliance rules applicable to food and edible packaged commodities.",
+  "rule_count": 3,
+  "rules": [
+    {
+      "rule_id": "LM_FOOD_001",
+      "category": "food",
+      "title": "Food articles: manufacturer/address declarations governed by FSS Act instead",
+      "requirement": "For packages containing food articles, the manufacturer/packer/importer name-and-address declaration requirement of rule 6(1)(a) does NOT apply; instead the provisions of, and requirements specified in, the Food Safety and Standards Act, 2006 and the rules made thereunder apply.",
+      "applies_when": "Applies to packages containing food articles.",
+      "check_type": "conditional_alternative_regime",
+      "check_parameters": {},
+      "evidence_required": [
+        "fssai_compliant_declarations"
+      ],
+      "source": [
+        {
+          "document": "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+          "rule_or_section": "Rule 6(1)(a), Explanation III",
+          "page": null
+        }
+      ],
+      "source_text": "Explanation III. - In respect of packages containing food articles, the provisions of this clause shall not apply, but the provisions of, and the requirements specified in the Food Safety and Standards Act, 2006 (34 of 2006) and the rules made thereunder shall apply;",
+      "effective_from": null,
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_FOOD_002",
+      "category": "food",
+      "title": "Genetically modified (GM) food labelling",
+      "requirement": "Every package containing genetically modified food must bear at the top of its principal display panel the word 'GM'.",
+      "applies_when": "Applies to packages containing genetically modified food, effective 1 January 2013.",
+      "check_type": "must_exist",
+      "check_parameters": {},
+      "evidence_required": [
+        "gm_label_on_pdp"
+      ],
+      "source": [
+        {
+          "document": "8_v__0_1732861119.pdf — G.S.R. 427(E), dated 5 June 2012 (LM(PC) Amendment Rules, 2012)",
+          "rule_or_section": "Rule 6, sub-rule (7) [inserted after renumbered sub-rule (6)]",
+          "page": null
+        }
+      ],
+      "source_text": "Every package containing the genetically modified food shall bear at the top of its principal display panel the words 'GM'.",
+      "effective_from": "2013-01-01",
+      "status": "active"
+    },
+    {
+      "rule_id": "LM_FOOD_003",
+      "category": "food",
+      "title": "Pan masala excluded from rule 26(a) exemption",
+      "requirement": "The exemption available under clause (a) of rule 26 (exemption in respect of certain packages) does NOT apply to pan masala; pan masala packages must therefore comply with the applicable LM(PC) Rules declaration requirements that clause (a) would otherwise have exempted.",
+      "applies_when": "Applies to packages of pan masala. Effective 1 February 2026.",
+      "check_type": "exclusion",
+      "check_parameters": {},
+      "evidence_required": [
+        "commodity_type"
+      ],
+      "source": [
+        {
+          "document": "2nd_PCR_Pan_Masala_1764736734.pdf — G.S.R. 881(E), dated 2 December 2025 (LM(PC) Second Amendment Rules, 2025 - Pan Masala), effective 1 Feb 2026",
+          "rule_or_section": "Rule 26(a), new proviso",
+          "page": null
+        }
+      ],
+      "source_text": "Provided further that the provisions of this clause shall not apply to pan masala;",
+      "effective_from": "2026-02-01",
+      "status": "active",
+      "confidence": "The full original text of rule 26(a) was not available in the provided documents, so the precise scope of the exemption being withdrawn could not be verified beyond the quoted proviso."
+    }
+  ],
+  "sources": [
+    "8_xii__0_1732871346.pdf — G.S.R. 629(E), dated 23 June 2017 (LM(PC) Amendment Rules, 2017)",
+    "8_v__0_1732861119.pdf — G.S.R. 427(E), dated 5 June 2012 (LM(PC) Amendment Rules, 2012)",
+    "2nd_PCR_Pan_Masala_1764736734.pdf — G.S.R. 881(E), dated 2 December 2025 (LM(PC) Second Amendment Rules, 2025 - Pan Masala), effective 1 Feb 2026"
+  ]
+}
